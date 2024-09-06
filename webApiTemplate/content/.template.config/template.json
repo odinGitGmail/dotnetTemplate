@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "OdinGitGmail", 
+    "classifications": [ "OdinWebApi" ],
+    "name": "Empty WebApi",
+    "identity": "Odin.EmptyWebApi",
+    "shortName": "odinewa",
+    "tags": {
+      "language": "C#" ,
+      "type":"project"
+    },
+    "sourceName": "webApi",
+    "preferNameDirectory": true
+}
