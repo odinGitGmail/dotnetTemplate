@@ -1,0 +1,2 @@
+# dotnetTemplate
+dotnet new Template
