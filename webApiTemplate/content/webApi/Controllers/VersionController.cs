@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace webApi.Controllers;
@@ -16,7 +17,8 @@ public class VersionController : ControllerBase
 // route: /api/v1.1/WeatherForecast/Hello2
     [HttpGet]
     [ApiVersion("1.1")]
-    [webApi.Extensions.VersionExtensions.ActionName("Hello")]
+    [ActionName("Hello")]
+    [Authorize]
     public string Hello2()
     {
         return "Hello world from Hello2!";
