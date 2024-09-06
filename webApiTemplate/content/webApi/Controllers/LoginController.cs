@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace webApi.Controllers;
 
+
 [Route("api/v{version:apiVersion}/[controller]/[action]")]
 public class LoginController : ControllerBase
 {
     // Jwt Token 的生成
     [HttpGet]
+    [ApiVersion("1.0")]
     public string GetToekn()
     {
         // // 注意，必须和上面的 JwtBearer 配置一致，且密钥最少16位，太少会报错！

@@ -14,11 +14,10 @@ public class VersionController : ControllerBase
         return "Hello world from Hello!";
     }
 
-// route: /api/v1.1/WeatherForecast/Hello2
+    // route: /api/v1.1/WeatherForecast/Hello2
     [HttpGet]
     [ApiVersion("1.1")]
-    [ActionName("Hello")]
-    [Authorize]
+    [Cola.Swagger.ActionName("Hello")]
     public string Hello2()
     {
         return "Hello world from Hello2!";
