@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Odin.Empty.Webapi.Template</id>
+    <version>1.0.0</version>
+    <description>
+      Creates a empty core webapi.
+    </description>
+    <authors>OdinGitGmail</authors>
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+    <license type="file">license\LICENSE.txt</license>
+  </metadata>
+</package>
