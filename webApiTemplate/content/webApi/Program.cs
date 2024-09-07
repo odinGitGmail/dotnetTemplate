@@ -1,3 +1,4 @@
+using Cola.Authen.Jwt;
 using Cola.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddColaSwagger(config);
-
+builder.Services.AddColaJwt(config);
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
@@ -23,6 +24,10 @@ app.UseCookiePolicy();
 app.UseStatusCodePages();
 app.UseHttpsRedirection();
 app.UseRouting();
+//开启认证
+app.UseAuthentication();
+//授权中间件
+app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");

@@ -1,6 +1,14 @@
 @webApi_HostAddress = http://localhost:5250
 
-GET {{webApi_HostAddress}}/weatherforecast/
-Accept: application/json
+### GetToken
+GET {{webApi_HostAddress}}/api/v1.0/Login/GetToken
+Content-Type: application/json
 
-###
+> {% client.global.set("auth_token", response.body.token.accessToken.token); %}
+
+
+
+### Hello
+GET {{webApi_HostAddress}}/api/v1.0/Version/Hello
+Accept: application/json
+Authorization: Bearer {{auth_token}}
