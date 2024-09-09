@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.JavaScript;
 using Cola.Authen;
 using Cola.Models.Core.Models;
 using Cola.Models.Core.Models.ColaAuthen;
@@ -20,10 +21,11 @@ public class LoginController(IAuthenToken authenToken) : ControllerBase
     /// <returns>Token</returns>
     [HttpGet]
     [ApiVersion("1.0")]
-    public ApiResult<string> GetToken()
+    public ApiResult<DateTime> GetToken()
     {
-        return new ApiResult<string>
+        return new ApiResult<DateTime>()
         {
+            Data = DateTime.Now,
             Token = new TokenModel()
             {
                 AccessToken = new AccessTokenModel()
