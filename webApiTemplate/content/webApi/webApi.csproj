@@ -17,8 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\..\..\Cola\Cola.Authen\Cola.Authen.csproj" />
-      <ProjectReference Include="..\..\..\..\..\Cola\Cola.Swagger\Cola.Swagger.csproj" />
+      <ProjectReference Include="..\..\..\..\Cola\Cola.Authen\Cola.Authen.csproj" />
+      <ProjectReference Include="..\..\..\..\Cola\Cola.Swagger\Cola.Swagger.csproj" />
     </ItemGroup>
 
 </Project>
