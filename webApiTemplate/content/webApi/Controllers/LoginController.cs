@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices.JavaScript;
 using Cola.Authen;
 using Cola.Models.Core.Models;
+using Cola.Models.Core.Models.ColaApiResult;
 using Cola.Models.Core.Models.ColaAuthen;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.JsonWebTokens;

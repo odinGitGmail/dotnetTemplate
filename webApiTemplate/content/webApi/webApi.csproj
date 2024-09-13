@@ -21,6 +21,9 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\..\Cola\Cola.Authen\Cola.Authen.csproj" />
+      <ProjectReference Include="..\..\..\..\Cola\Cola.Core\Cola.Core.csproj" />
+      <ProjectReference Include="..\..\..\..\Cola\Cola.FilterExtensions\Cola.FilterExtensions.csproj" />
+      <ProjectReference Include="..\..\..\..\Cola\Cola.Middlewares\Cola.Middlewares.csproj" />
       <ProjectReference Include="..\..\..\..\Cola\Cola.Swagger\Cola.Swagger.csproj" />
     </ItemGroup>
 

@@ -1,3 +1,4 @@
+using Cola.Models.Core.Models.ColaApiResult;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,9 +14,12 @@ public class VersionController : ControllerBase
     /// <returns></returns>
     [HttpGet]
     [ApiVersion("1.0")]
-    public string Hello()
+    public ApiResult<string> Hello()
     {
-        return "Hello world from Hello!";
+        return new ApiResult<string>()
+        {
+            Data = "Hello world from Hello!"
+        };
     }
     
     /// <summary>
