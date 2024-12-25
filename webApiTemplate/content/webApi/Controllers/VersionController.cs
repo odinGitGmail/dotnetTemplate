@@ -45,4 +45,20 @@ public class VersionController : ControllerBase
     {
         return "Hello world from Hello2!";
     }
+    
+    /// <summary>
+    /// error-test
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    [ApiVersion("1.1")]
+    [Cola.Swagger.ActionName("error-test")]
+    public string ErrorTest()
+    {
+        int a = 1;
+        int b = 0;
+        int c = a / b;
+        return "Hello world from Hello2!";
+    }
 }
+
