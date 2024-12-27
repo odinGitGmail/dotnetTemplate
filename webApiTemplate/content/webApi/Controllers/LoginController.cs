@@ -1,10 +1,13 @@
-using System.Runtime.InteropServices.JavaScript;
 using Cola.Authen;
-using Cola.Models.Core.Models;
+using Cola.EF.BaseRepository;
 using Cola.Models.Core.Models.ColaApiResult;
 using Cola.Models.Core.Models.ColaAuthen;
+using Cola.Utils;
+using Cola.Utils.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.JsonWebTokens;
+using webApi.Models;
 
 namespace webApi.Controllers;
 
@@ -37,6 +40,22 @@ public class LoginController(IAuthenToken authenToken) : ControllerBase
                     })
                 }
             }
+        };
+    }
+    
+    /// <summary>
+    /// GetString
+    /// </summary>
+    /// <returns>Token</returns>
+    [AllowAnonymous]
+    [HttpGet]
+    [ApiVersion("1.0")]
+    public ApiResult<string> GetString()
+    {
+        // throw new ColaException(enumException: EnumException.SyS000006);
+        return new ApiResult<string>()
+        {
+            Data = "create Table"
         };
     }
 }
