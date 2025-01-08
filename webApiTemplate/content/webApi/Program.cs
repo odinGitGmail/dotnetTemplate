@@ -1,9 +1,10 @@
 using Cola.Console;
 using Cola.Core;
-using Cola.EF.EfInject;
 using Cola.FilterExtensions;
 using Cola.Models.Core.Models.ColaSqlsugar;
+using Cola.Orm;
 using Cola.Swagger;
+using SqlSugar;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -17,37 +18,8 @@ builder.Services.AddControllers(options =>
         options.UseCamelCasing(true);
         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
     });
-var colaConsole = builder.Services.BuildServiceProvider().GetService<IColaConsole>();
-builder.Services.AddSingletonColaSqlSugar(config
-    // null,
-    // tableFilter:(new List<GlobalQueryFilter>()
-    // {
-    //     new GlobalQueryFilter()
-    //     {
-    //         ConfigId = "1",
-    //         QueryFilter = (provider => provider.AddTableFilter<IStatus>(t => t.IsDelete == false))
-    //     }
-    // }),
-    // aopOnLogExecutingModels:new List<AopOnLogExecutingModel>()
-    // {
-    //     new AopOnLogExecutingModel()
-    //     {
-    //         ConfigId   = "1",
-    //         AopOnLogExecuting = ((sql, parameters) =>
-    //         {
-    //             colaConsole.WriteInfo($"sql is\n{sql}");
-    //         })
-    //     }
-    // },
-    // aopOnErrorModels:new List<AopOnErrorModel>()
-    // {
-    //     new AopOnErrorModel()
-    //     {
-    //         ConfigId = "1",
-    //         AopOnError = (colaConsole.WriteException)
-    //     }
-    // }
-);
+
+builder.Services.AddColaOrm(config);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
