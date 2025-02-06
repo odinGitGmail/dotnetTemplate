@@ -1,4 +1,4 @@
-using Cola.Orm.EntityBase;
+using Cola.EF.Core.Interfaces;
 using SqlSugar;
 
 namespace webApi.Models;
@@ -7,7 +7,7 @@ namespace webApi.Models;
 /// Student
 /// </summary>
 [SugarTable("tb_Student")]
-public class Student : IEntityBase<int>
+public class Student : IEntity<int>
 {
     /// <summary>
     /// Id

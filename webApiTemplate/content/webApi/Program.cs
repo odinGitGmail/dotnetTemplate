@@ -1,13 +1,12 @@
-using Cola.Console;
 using Cola.Core;
+using Cola.EF.Web.Extensions;
 using Cola.FilterExtensions;
-using Cola.Models.Core.Models.ColaSqlsugar;
-using Cola.Orm;
+using Cola.Models.Core.Models.ColaEF;
 using Cola.Swagger;
-using SqlSugar;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
+builder.Services.Configure<List<ColaEFConfig>>(config.GetSection("DatabaseConfigs"));
 builder.Services.AddColaCore(config);
 builder.Services.AddControllers(options =>
     {
@@ -19,13 +18,12 @@ builder.Services.AddControllers(options =>
         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
     });
 
-builder.Services.AddColaOrm(config);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddColaSwaggerAndJwt(config);
-
+builder.Services.AddColaEF();
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
