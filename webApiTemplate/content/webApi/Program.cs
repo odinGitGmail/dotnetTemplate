@@ -1,5 +1,5 @@
 using Cola.Core;
-using Cola.EF.Web.Extensions;
+using Cola.EF;
 using Cola.FilterExtensions;
 using Cola.Models.Core.Models.ColaEF;
 using Cola.Swagger;

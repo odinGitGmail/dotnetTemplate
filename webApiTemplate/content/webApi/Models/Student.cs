@@ -1,4 +1,6 @@
+using System.ComponentModel.DataAnnotations;
 using Cola.EF.Core.Interfaces;
+using Cola.EF.SqlSugar;
 using SqlSugar;
 
 namespace webApi.Models;
@@ -7,14 +9,8 @@ namespace webApi.Models;
 /// Student
 /// </summary>
 [SugarTable("tb_Student")]
-public class Student : IEntity<int>
+public class Student : EntityBase<int>
 {
-    /// <summary>
-    /// Id
-    /// </summary>
-    [SugarColumn(IsPrimaryKey = true, IsIdentity = true)] // 主键且自增
-    public int Id { get; set; }
-    
     /// <summary>
     /// StudentName
     /// </summary>
@@ -25,4 +21,9 @@ public class Student : IEntity<int>
     /// Age
     /// </summary>
     public int Age { get; set; }
+
+    /// <summary>
+    /// GradeId
+    /// </summary>
+    public int? GradeId { get; set; }
 }
