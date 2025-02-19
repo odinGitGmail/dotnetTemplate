@@ -16,49 +16,7 @@ public class VersionController : ControllerBase
     [ApiVersion("1.0")]
     public ApiResult<string> Hello()
     {
-        return new ApiResult<string>()
-        {
-            Data = "Hello world from Hello!"
-        };
-    }
-    
-    /// <summary>
-    /// 1.0 Hello3
-    /// </summary>
-    /// <returns></returns>
-    [HttpGet]
-    [ApiVersion("1.0")]
-    [Cola.Swagger.ActionName("Hello3")]
-    public string Hello3()
-    {
-        return "Hello world from 1.0 Hello3!";
-    }
-
-    /// <summary>
-    /// 1.1 hello
-    /// </summary>
-    /// <returns></returns>
-    [HttpGet]
-    [ApiVersion("1.1")]
-    [Cola.Swagger.ActionName("Hello")]
-    public string Hello2()
-    {
-        return "Hello world from Hello2!";
-    }
-    
-    /// <summary>
-    /// error-test
-    /// </summary>
-    /// <returns></returns>
-    [HttpGet]
-    [ApiVersion("1.1")]
-    [Cola.Swagger.ActionName("error-test")]
-    public string ErrorTest()
-    {
-        int a = 1;
-        int b = 0;
-        int c = a / b;
-        return "Hello world from Hello2!";
+        return ApiResult<string>.Success("Hello world from Hello!");
     }
 }
 

@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Cola.Authen;
 using Cola.EF.Core.Interfaces;
 using Cola.Models.Core.Models.ColaApiResult;
@@ -28,20 +29,12 @@ public class LoginController(IAuthenToken authenToken,IUnitOfWork uow) : Control
     [ActionName("token")]
     public ApiResult<DateTime> GetToken()
     {
-        return new ApiResult<DateTime>()
-        {
-            Data = DateTime.Now,
-            Token = new TokenModel()
+        return ApiResult<DateTime>.Success(
+            DateTime.Now,
+            authenToken.GenerateToken(new Dictionary<string, string>()
             {
-                AccessToken = new AccessTokenModel()
-                {
-                    TokenStr = authenToken.GenerateToekn(new Dictionary<string, string>()
-                    {
-                        {JwtRegisteredClaimNames.Name,"odinsam"}
-                    })
-                }
-            }
-        };
+                { JwtRegisteredClaimNames.Name, "odinsam" }
+            }));
     }
     
     /// <summary>
@@ -61,10 +54,7 @@ public class LoginController(IAuthenToken authenToken,IUnitOfWork uow) : Control
             var student = uow.GetRepository<Student, int>();
             var stu = student.GetSingleOrDefault(1);
             uow.CommitTransaction();
-            return new ApiResult<Student>()
-            {
-                Data = stu
-            };
+            return ApiResult<Student>.Success(stu);
         }
         catch (Exception e)
         {
@@ -106,13 +96,14 @@ public class LoginController(IAuthenToken authenToken,IUnitOfWork uow) : Control
                 Age = s.Age,
                 GradeName = SqlFunc.Subqueryable<Grade>().Where(g=> g.Id== s.Id).Select(g=>g.GradeName)
             });
-            var stuGrade = student.Query(selectExpression, joinExpression, whereExpression,whereIfExpressions,orderExpressions);
+            var stuGrade = student.Query(
+                selectExpression, 
+                joinExpression, 
+                [whereExpression],
+                whereIfExpressions,orderExpressions);
             
             uow.CommitTransaction();
-            return new ApiResult<List<StudentGrade>>()
-            {
-                Data = stuGrade
-            };
+            return ApiResult<List<StudentGrade>>.Success(stuGrade);
         }
         catch (Exception e)
         {
@@ -161,16 +152,13 @@ public class LoginController(IAuthenToken authenToken,IUnitOfWork uow) : Control
                 new PageQueryResponse<StudentGrade>(){PageNumber = pageNumber},
                 selectExpression, 
                 primaryKeyExpression,
-                joinExpression, 
-                whereExpression,
+                joinExpression,
+                [whereExpression],
                 whereIfExpressions,
                 orderExpressions);
             
             uow.CommitTransaction();
-            return new ApiResult<PageQueryResponse<StudentGrade>>()
-            {
-                Data = stuGrade
-            };
+            return ApiResult<PageQueryResponse<StudentGrade>>.Success(stuGrade);
         }
         catch (Exception e)
         {

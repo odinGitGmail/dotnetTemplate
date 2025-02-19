@@ -2,12 +2,11 @@ using Cola.Core;
 using Cola.EF;
 using Cola.FilterExtensions;
 using Cola.Models.Core.Models.ColaEF;
-using Cola.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
 builder.Services.Configure<List<ColaEFConfig>>(config.GetSection("DatabaseConfigs"));
-builder.Services.AddColaCore(config);
+builder.Services.AddColaCore();
 builder.Services.AddControllers(options =>
     {
         options.Filters.Add(typeof(ColaActionFilter));
@@ -28,7 +27,6 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseColaSwagger(builder,config);
 }
 
 app.UseStaticFiles();
